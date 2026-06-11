@@ -28,7 +28,6 @@ wheels/
 # Django
 *.log
 db.sqlite3
-staticfiles/
 
 # IDE
 .vscode/
