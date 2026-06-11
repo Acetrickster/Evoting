@@ -33,18 +33,18 @@ except ImportError:
 if HAS_DECOUPLE:
     SECRET_KEY = config('SECRET_KEY', default='django-insecure-^^y=(*n0@qd78aj2wwy41j#3)g%kc3q^!$*s_gq0d%3i8)5lka')
     DEBUG = config('DEBUG', default=True, cast=bool)
-    ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=Csv())
+    ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,evoting-app-4y57.onrender.com', cast=Csv())
 else:
     SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-^^y=(*n0@qd78aj2wwy41j#3)g%kc3q^!$*s_gq0d%3i8)5lka')
     DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
-    ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+    ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,evoting-app-4y57.onrender.com').split(',')
 if not DEBUG:
     # In production, use the ALLOWED_HOSTS from environment (e.g. your-app.onrender.com)
     # Falls back to allowing all only if not explicitly set
     if HAS_DECOUPLE:
-        ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*', cast=Csv())
+        ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='evoting-app-4y57.onrender.com', cast=Csv())
     else:
-        ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+        ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'evoting-app-4y57.onrender.com').split(',')
 
 
 # Application definition
