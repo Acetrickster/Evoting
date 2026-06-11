@@ -157,7 +157,11 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / "OVS_SRGI" / "static",
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Use WhiteNoise for serving static files in production
+if not DEBUG:
+    STATICFILES_STORAGE = 'whitenoise.storage.WhiteNoiseStaticFilesStorage'
+else:
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Media files (User uploads)
 MEDIA_URL = '/media/'
